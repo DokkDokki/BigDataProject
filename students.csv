@@ -1,0 +1,6 @@
+_id,studentId,profile,status,createdAt
+69853e7f503d41a304080014,65010001,"{'name': 'Peter', 'major': 'Data Analytics', 'year': 2}",active,2026-02-05 00:00:00
+69853f05503d41a304080016,65010002,"{'name': 'Sam', 'major': 'Data Science', 'year': 3}",active,2026-02-05 00:00:00
+69853f5d503d41a304080018,65010003,"{'name': 'James', 'major': 'Programmer', 'year': 1}",active,2026-02-05 00:00:00
+69853fa9503d41a30408001a,65010004,"{'name': 'Endo', 'major': 'Sports', 'year': 4}",active,2026-02-05 00:00:00
+6985401e503d41a30408001c,65010005,"{'name': 'Macca', 'major': 'software Engineering', 'year': 2}",active,2026-02-05 00:00:00
