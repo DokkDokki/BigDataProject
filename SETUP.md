@@ -1,15 +1,16 @@
-1. create your own .env file
+## MongoDB Setup (Important)
 
-Copy from .env.example
+- This project uses a shared MongoDB Atlas cluster.
+- Data is already imported into database: `student_dropout_db`
+- Collection name: `students`
 
-MONGO_URI=mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.hagjvo3.mongodb.net/student_dropout_db?retryWrites=true&w=majority&authSource=admin
+### Steps for team members:
+1. Ask project owner to add you as a MongoDB Database User
+2. Create your own `.env` file from `.env.example`
+3. Put your own MongoDB connection string in `MONGO_URI`
+4. Run:
+   ```bash
+   python load_data.py
 
-2. Test connection by running:
-
-python load_data.py
-
-Expected:
-Ping OK
-Collections: ['students']
 
 
