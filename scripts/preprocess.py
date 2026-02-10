@@ -4,8 +4,8 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 import joblib
 
-# Dropped useless row(s)
-df = df.drop(columns=['_id'])
+# Dropped useless columns
+df = df.drop(columns=[['_id', 'Inflation rate', 'Unemployment rate', 'GDP']])
 
 # Renamed columns
 rename_map = {
@@ -44,12 +44,7 @@ rename_map = {
     'Curricular units 2nd sem (approved)': 'cu_2_approved',
     'Curricular units 2nd sem (grade)': 'cu_2_grade',
     'Curricular units 2nd sem (without evaluations)': 'cu_2_no_eval',
-
-    # Economics
-    'Unemployment rate': 'unemployment_rate',
-    'Inflation rate': 'inflation_rate',
-    'GDP': 'gdp',
-
+    
     # Target
     'Target': 'target',
 }
@@ -79,7 +74,6 @@ cat_cols = [
     'gender',
     'scholarship',
     'international',
-    'target_encoded'
 ]
 
 num_cols = [
@@ -100,11 +94,6 @@ num_cols = [
     'cu_2_approved',
     'cu_2_grade',
     'cu_2_no_eval',
-
-    # Economics
-    'unemployment_rate',
-    'inflation_rate',
-    'gdp'
 ]
 
 # Preprocessing
