@@ -52,13 +52,10 @@ rename_map = {
     'Target': 'target',
 }
 
-
 df = df.rename(columns = rename_map)
 
 label_encoder = LabelEncoder()
 df['target_encoded'] = label_encoder.fit_transform(df['target'])
-
-df[['target', 'target_encoded']].head()
 
 cat_cols = [
     'marital_status',
