@@ -4,8 +4,10 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 import joblib
 
+# Dropped useless row(s)
 df = df.drop(columns=['_id'])
 
+# Renamed columns
 rename_map = {
     'Marital status': 'marital_status',
     'Application mode': 'application_mode',
@@ -54,6 +56,7 @@ rename_map = {
 
 df = df.rename(columns = rename_map)
 
+# Encoded 'target'
 label_encoder = LabelEncoder()
 df['target_encoded'] = label_encoder.fit_transform(df['target'])
 
@@ -104,6 +107,7 @@ num_cols = [
     'gdp'
 ]
 
+# Preprocessing
 preprocessor = ColumnTransformer(
     transformers=[
         ('num', StandardScaler(), num_cols),
