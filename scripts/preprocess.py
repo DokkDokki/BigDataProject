@@ -3,9 +3,12 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 import joblib
+from load_data import load_data
+
+df = load_data()
 
 # Dropped useless columns
-df = df.drop(columns=[['_id', 'Inflation rate', 'Unemployment rate', 'GDP']])
+df = df.drop(columns=[ 'Inflation rate', 'Unemployment rate', 'GDP'])
 
 # Renamed columns
 rename_map = {
