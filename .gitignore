@@ -17,3 +17,6 @@ Thumbs.db
 
 # Model Artifacts
 *.joblib
+
+node_modules/
+.env
