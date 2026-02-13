@@ -23,4 +23,4 @@ Thumbs.db
 
 node_modules/
 CRUD_blog_app/node_modules/
-.env
+CRUD_blog_app/.env
