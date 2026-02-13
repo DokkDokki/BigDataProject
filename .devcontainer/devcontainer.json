@@ -1,0 +1,23 @@
+{
+  "name": "Node.js Server Dev",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+
+  // Installs extensions inside the container automatically
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+
+  // Forward the app's port so they can see it locally
+  "forwardPorts": [3000],
+
+  // CRITICAL: Ensure files created inside the container are owned by the 'node' user
+  // (which maps back to the host user thanks to VS Code magic)
+  "remoteUser": "node"
+}

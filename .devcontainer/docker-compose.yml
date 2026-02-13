@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    # Use a standard Node image or build your own
+    image: mcr.microsoft.com/devcontainers/javascript-node:20
+    
+    # Mount the current folder (host) to /workspace (container)
+    volumes:
+      - ../:/workspace:cached
+      
+    # Keep the container running
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+    # Network settings (Optional: use 'host' if you want it on the server's real IP)
+    # network_mode: service:db  <-- If you had a database container
