@@ -1,0 +1,40 @@
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="blogs content">
+    <h2>Student Dropout Prediction Dashboard</h2>
+    
+    <div class="student-grid">
+      <% if (blogs && blogs.length > 0) { %>
+        <% blogs.forEach(blog => { %>
+          <div class="student-card">
+            <div class="avatar-wrapper">
+              <img src="https://www.thesun.co.uk/wp-content/uploads/2024/09/newspress-collage-zvt2abhd8-1727443104302.jpg?quality=80&strip=all&1727446733&w=1080&h=1080&crop=1>" alt="student">
+            </div>
+            
+            <div class="card-body">
+              <h3>ID: <%= blog._id.toString().slice(-6).toUpperCase() %></h3>
+              <p><strong>Course:</strong> <%= blog["Course"] || "Unassigned" %></p>
+              <p><strong>Age:</strong> <%= blog["Age at enrollment"] || "N/A" %></p>
+              
+              <div class="status-pill">
+                <% const isHighRisk = blog.risk_score > 0.5; %>
+                Status: <span class="<%= isHighRisk ? 'high-risk' : 'low-risk' %>">
+                  <%= isHighRisk ? 'High Risk' : 'Low Risk' %>
+                </span>
+              </div>
+            </div>
+
+            <a href="/blogs/<%= blog._id %>" class="view-btn">View Profile</a>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No student records found in the database.</p>
+      <% } %>
+    </div>
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+</body>

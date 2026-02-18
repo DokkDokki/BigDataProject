@@ -1,21 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const blogSchema = new Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    snippet: {
-        type: String,
-        required: true,
-    },
-    body: {
-        type: String,
-        required: true
-    },
+const studentSchema = new Schema({
+    "Marital status": Number,
+    "Course": Number,
+    "Age at enrollment": Number,
+    "student_id": String, // this for the ID on student cards
+    "risk_score": Number  // what the Python AI provides
 }, { timestamps: true });
 
-const Blog = mongoose.model('Blog', blogSchema);
-
-module.exports = Blog;
+const Student = mongoose.model('Student', studentSchema, 'students');
+module.exports = Student;

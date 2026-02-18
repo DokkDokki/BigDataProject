@@ -1,21 +1,45 @@
-<html lang="en">
 <%- include("./partials/head.ejs") %>
 
 <body>
   <%- include("./partials/nav.ejs") %>
 
   <div class="details content">
-    <h2><%= blog.title %></h2>
+    <h2>Student Profile: <%= blog.student_id || "N/A" %></h2>
+    
+    <div class="profile-container">
+      <div class="profile-card">
+        <div class="status-header">
+            <span class="badge <%= blog.risk_score > 0.5 ? 'high' : 'low' %>">
+                <%= blog.risk_score > 0.5 ? 'High Risk' : 'Low Risk' %>
+            </span>
+        </div>
 
-    <div class="content">
-      <p><%= blog.body %></p>
-    </div>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Course Code</label>
+            <p><%= blog["Course"] %></p>
+          </div>
+          <div class="info-item">
+            <label>Age at Enrollment</label>
+            <p><%= blog["Age at enrollment"] %></p>
+          </div>
+          <div class="info-item">
+            <label>Marital Status</label>
+            <p><%= blog["Marital status"] %></p>
+          </div>
+          <div class="info-item">
+            <label>Risk Probability</label>
+            <p><%= (blog.risk_score * 100).toFixed(2) %>%</p>
+          </div>
+        </div>
 
-    <div class="button">
-      <a class="edit" href="/blogs/update/<%= blog._id %>">Edit</a>
-      <a class="delete" data-doc="<%= blog._id %>">
-        <img src="/trashcan.svg" alt="delete icon">
-      </a>
+        <div class="actions">
+          <a class="edit" href="/blogs/update/<%= blog._id %>">Edit Data</a>
+          <a class="delete" data-doc="<%= blog._id %>">
+            <img src="/trashcan.svg" alt="delete icon"> Delete Student
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -23,18 +47,12 @@
 
   <script>
     const trashcan = document.querySelector('a.delete');
-
-    trashcan.addEventListener('click', () => {
+    trashcan.addEventListener('click', (e) => {
       const endpoint = `/blogs/${trashcan.dataset.doc}`;
-
-      fetch(endpoint, {
-        method: 'DELETE',
-      })
-      .then(response => response.json())
-      .then(data => window.location.href = data.redirect)
-      .catch(err => console.log(err));
+      fetch(endpoint, { method: 'DELETE' })
+        .then(response => response.json())
+        .then(data => window.location.href = data.redirect)
+        .catch(err => console.log(err));
     });
   </script>
-
 </body>
-</html>
